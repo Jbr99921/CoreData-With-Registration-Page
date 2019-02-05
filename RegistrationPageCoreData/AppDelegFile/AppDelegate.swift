@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
+//        print(path[0])
+        
+        let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
+        
+        print("DataPath : ",FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         return true
     }
 
@@ -67,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  * The store could not be migrated to the current model version.
                  Check the error message to determine what the actual problem was.
                  */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+               fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
